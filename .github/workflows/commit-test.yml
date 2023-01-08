@@ -1,7 +1,17 @@
 name: Github Actions Test
 on: [push]
 jobs:
-  Check-Github-Actions:
+  Deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "triggered by ${{ github.event_name }}"
+      - run: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PWD }}
+          script_stop: true
+          script: |
+            pwd
+            ls -l
+            touch secret.txt
+            echo ${{ secrets.SSH_HOST }} >> secret.txt
