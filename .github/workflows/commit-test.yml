@@ -11,7 +11,7 @@ jobs:
           password: ${{ secrets.SSH_PWD }}
           script_stop: true
           script: |
-            pwd
-            ls -l
-            touch secret.txt
-            echo ${{ secrets.SSH_HOST }} >> secret.txt
+            cd /root/resource/nginx
+            ls -al
+            rm -rf commit-test
+            git clone https://github.com/sam9831/commit-test.git
