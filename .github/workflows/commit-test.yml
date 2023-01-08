@@ -1,0 +1,7 @@
+name: Github Actions Test
+on: [push]
+jobs:
+  Check-Github-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "triggered by ${{ github.event_name }}"
